@@ -1,19 +1,10 @@
 import Foundation
 
 func underscoreToCamelCase(string: String) -> String {
-    var items: [String] = string.componentsSeparatedByString("_")
-    var camelCase = ""
-    var isFirst = true
-    for item: String in items {
-        if isFirst == true {
-            isFirst = false
-            camelCase += item
-        } else {
-            camelCase += item.capitalizedString
-        }
-    }
-    return camelCase
+  let items = string.componentsSeparatedByString("_")
+  return items.reduce("") { $0.isEmpty ? $1 : $0 + $1.capitalizedString }
 }
+
 
 extension NSObject {
     class func fromJson(jsonInfo: NSDictionary) -> Self {
